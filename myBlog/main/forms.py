@@ -1,5 +1,6 @@
 from django import forms
 from .models import *
+from ckeditor_uploader.widgets import CKEditorUploadingWidget
 
 class PostForm(forms.ModelForm):
 
@@ -8,16 +9,17 @@ class PostForm(forms.ModelForm):
         fields = ('author', 'title', 'text')
         widgets = {
             'title': forms.TextInput(attrs={'class': 'textinputclass'}),
-            'text' : forms.Textarea(attr = {'class':'editable medium-editor-textarea postcontent'}),
+            #'text' : forms.Textarea(attrs = {'class':'editable medium-editor-textarea postcontent'}),
         }
 
 
 class CommentForm(forms.ModelForm):
 
     class Meta():
-        model = Comments
+        model = Comment
         fields = ('author', 'text')
         widgets = {
             'author': forms.TextInput(attrs={'class': 'textinputclass'}),
-            'text': forms.Textarea(attrs={'class':'editable medium-editor-textarea'})
+            #'text': forms.Textarea(attrs={'class':'editable medium-editor-textarea'})
+            'text': CKEditorUploadingWidget(),
         }
