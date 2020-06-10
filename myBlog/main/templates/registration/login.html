@@ -1,11 +1,11 @@
-{% extends 'main/base.html %}
+{% extends 'main/base.html' %}
 
 {% block content %}
-<div class="jumbotron">
+<div class="jumbotron mt-5">
     <h1 class="display-3">Please Login</h1>
-    <p class="lead">J(Must be SuperUser, please check with the site admin)</p>
+    <p class="lead">(Must be SuperUser, please check with the site admin)</p>
     <hr class="my-2">
-    <p>More info</p>
+
 
     {% if form.errors %}
     <p>Your username and password did'nt match! Please try again.</p>
@@ -13,7 +13,7 @@
 
     <form action="{% url 'login' %}" method="POST">
         {% csrf_token %}
-        {% form.as_p %}
+        {{ form.as_p }}
         <input class="btn btn-primary" type="submit" value="Login">
         <input type="hidden" name="next" value="{{next}}">
     </form>

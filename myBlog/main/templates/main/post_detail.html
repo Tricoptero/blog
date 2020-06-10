@@ -1,0 +1,60 @@
+{% extends 'main/base.html' %}
+{% block content %}
+
+<div class="posttitle">{{post.title}}</div>
+<div class="mytiny">
+            <i class="material-icons md-12">person</i>
+            {{post.author|capfirst}}
+            <i class="material-icons md-12 ml-3">calendar_today</i>
+            {% if post.published_date%}
+                {{post.published_date|date:"D d M Y"}}
+            {% endif %}
+            <i class="material-icons md-12 ml-3">mode_comment</i>
+            {{post.approve_comments.count}} comentarios
+</div>
+
+{% if not  post.published_date %}
+    <a class="btn btn-outline-secondary btn-sm" href="{%url 'post_publish' pk=post.pk%}">Publish</a>
+{% endif %}
+<div class="mt-4">{{post.text|safe|linebreaksbr|truncatechars:400}}</div>
+
+
+<div class="shadow-none p-2 mt-2 mb-2 bg-misombra rounded"></div>
+{% if user.is_authenticated %}
+    <a class='btn btn-outline-secondary btn-sm' href="{% url 'post_edit' pk=post.pk %}">
+        <i class="material-icons md-18">create</i>
+    </a>
+    <a class='btn btn-outline-secondary btn-sm' href="{% url 'post_remove' pk=post.pk %}">
+        <i class="material-icons md-18">delete</i>
+    </a>
+
+{% endif %}
+<a class="btn btn-primary btn-sm" href="{% url 'add_comment_to_post' pk=post.pk%}">Añadir Comentario</a>
+<div class="container">
+    {% for comment in post.post_comments.all %}
+    <br>
+    {% if user.is_authenticated or comment.approved_comment %}
+
+
+
+        <p >
+            <i class="material-icons md-18">person</i>
+            <span class="text-primary">{{ comment.author }}</span>
+        </p>
+        <p class="text-secondary">{{comment.created_date}}</p>
+        <p>{{ comment.text|safe|linebreaks }}</p>
+        {% if not comment.approved_comment %}
+            <a class='btn btn-outline-secondary btn-sm' href="{% url 'comment_remove' pk=comment.pk %}">
+                <i class="material-icons">delete</i>
+            </a>
+            <a class='btn btn-outline-secondary btn-sm' href="{% url 'comment_approve' pk=comment.pk %}">
+                <i class="material-icons">thumb_up</i>
+            </a>
+        {% endif %}
+        <hr>
+    {% endif %}
+    {% empty %}
+        <p>No comments posted.</p>
+    {%endfor%}
+</div>
+{% endblock %}

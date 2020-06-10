@@ -25,6 +25,7 @@ urlpatterns = [
     path('accounts/login/', views.LoginView.as_view(template_name='registration/login.html'), name='login'),
     path('accounts/logout/', views.LogoutView.as_view(), name='logout', kwargs={'next_page':'/'}),
     path('ckeditor/', include('ckeditor_uploader.urls')),
+
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

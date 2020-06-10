@@ -38,7 +38,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'ckeditor',
-    'ckeditor_uploader',
     'main',
 ]
 
@@ -122,6 +121,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'main/static')
+
 #STATIC_FILES_FINDER = [
 #    'django.contrib.staticfiles.finders.FileSystemFinder',
 #    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
@@ -129,8 +129,8 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'main/static')
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'main/media')
-CKEDITOR_UPLOAD_PATH = "upload/"
-CKEDITOR_IMAGE_BACKEND = "pillow"
-X_FRAME_OPTIONS = 'SAMEORIGIN'
 
 LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
+
+CKEDITOR_UPLOAD_PATH = "uploads/"

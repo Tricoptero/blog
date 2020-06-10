@@ -1,0 +1,52 @@
+.centerstage{
+    margin-left: auto;
+    margin-right: auto;
+}
+.techfont{
+
+  font-size: 1em;
+  margin-bottom: 10px;
+}
+
+.postdate{
+  text-align: center;
+}
+
+.posttitle{
+
+  font-size: 3em;
+}
+
+.postcontent{
+
+  font-size: 1.5em;
+}
+
+.btn-comment{
+  position: absolute;
+  right: 0px;
+}
+
+.bigbrand{
+  font-size: 1.5em;
+}
+.mytiny{
+   font-size: 0.75em;
+   color: #a2bcc9;
+}
+.mytinyi{
+   font-size: 18px;
+   color: #a2bcc9;
+}
+.material-icons.md-12 { font-size: 12px; }
+.material-icons.md-18 { font-size: 18px; }
+.material-icons.md-24 { font-size: 24px; }
+.material-icons.md-36 { font-size: 36px; }
+.material-icons.md-48 { font-size: 48px; }
+
+.bg-misombra{
+    background-color: #bed4df;
+}
+
+
+

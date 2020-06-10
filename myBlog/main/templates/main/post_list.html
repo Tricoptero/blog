@@ -1,0 +1,22 @@
+{% extends 'main/base.html' %}
+{% block content %}
+<div class="centerstage">
+
+    {% for post in post_list%}
+
+    <div class="post">
+        <h1><a href="{% url 'post_detail' pk=post.pk %}">{{post.title}}</a> </h1>
+        <div class="mytiny">
+            <i class="material-icons md-12">person</i>
+            {{post.author|capfirst}}
+            <i class="material-icons md-12 ml-3">calendar_today</i>
+            {{post.published_date|date:"D d M Y"}}
+            <i class="material-icons md-12 ml-3">mode_comment</i>
+            {{post.approve_comments.count}} comentarios
+        </div>
+        <div class="mt-4">{{post.text|safe|linebreaksbr|truncatechars:400}}</div>
+    </div>
+    <hr>
+    {% endfor%}
+</div>
+{% endblock %}
